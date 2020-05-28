@@ -1,0 +1,26 @@
+main {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/header.webp') !important;
+}
+
+#notesWrapper #tabsWrapper {
+    background-color: #384258 !important;
+}
+
+#addNewTab>button>span {
+    background-color: #8a898b !important;
+}
+
+.animateAddNewTab {
+    animation: none !important;
+    animation: darkAddTabBtn 1s cubic-bezier(0.66, 0, 0, 1) infinite !important;
+}
+
+@keyframes darkAddTabBtn {
+    from {
+        box-shadow: inset 0 0 0 2px #fbc32f;
+    }
+
+    to {
+        box-shadow: inset 0 0 0 2px rgba(251, 195, 47, 0);
+    }
+}

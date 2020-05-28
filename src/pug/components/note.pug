@@ -1,0 +1,85 @@
+#notesWrapper
+    
+    // tabswrapper
+    #tabsWrapper
+
+        // colors    
+        #colorsBox
+            button(type="button" id="red")
+            button(type="button" id="yellow")
+            button(type="button" id="green")
+
+        // tabs slider
+        #tabsSlider
+
+            // tab
+            //- div(class="tab currentTab")
+            //-     // tasks number
+            //-     span(class="tasksNum") 
+            //-     // tab title
+            //-     input(type="text", class="noteTitle", value="New Note", placeholder="New Note")
+            //-     // tab close btn
+            //-     button(type="button", class="xBtn")
+            //-         i.clickXBtn
+            //-         span.clickXBtn
+            //-         span.clickXBtn
+            //-     // tab content
+            //-     .content
+            //-         ul
+                        //- li
+                        //-     span.editCon
+                        //-         img(src="img/edit-pen.svg", class="editNote",alt="edit-pen")
+
+                        //-     span.selectCon
+                        //-         label
+                        //-             input(type="checkbox", class="selectItem")
+                        //-             span.check   
+                
+                        //-     span.textCon Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+
+            // add new tab btn
+            #addNewTab(title="Add New Tab")
+                .animateAddNewTab
+                button(type="button", class="aBtn clickAddTab")
+                    span.clickAddTab
+                    span.clickAddTab
+
+    // search engine
+    #engineWrapper
+        div.sliderBtns
+            button(type="button", class="prevBtn")
+                <svg class="prevBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xmlns:v="https://vecta.io/nano">
+                    <path class="prevBtn" d="M54 30H14.1L29.38 15.448a2 2 0 1 0-2.759-2.897L9.172 29.17C8.417 29.927 8 30.93 8 32s.417 2.073 1.207 2.862L26.62 51.448A1.99 1.99 0 0 0 28 52c.528 0 1.056-.208 1.45-.62a2 2 0 0 0-.069-2.827L14.038 34H54a2 2 0 1 0 0-4z"/>
+                </svg>
+
+            button(type="button", class="nextBtn")
+                <svg class="nextBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" xmlns:v="https://vecta.io/nano">
+                    <path class="nextBtn" d="M37.38 12.552a2 2 0 0 0-2.758 2.897L49.963 30H10a2 2 0 1 0 0 4h39.9L34.62 48.552a2 2 0 0 0-.069 2.828c.393.412.92.62 1.448.62a1.99 1.99 0 0 0 1.379-.552l17.45-16.62A3.97 3.97 0 0 0 56 32c0-1.07-.416-2.073-1.207-2.862z"/>
+                </svg>
+        
+        div.selectAll
+            label
+                input(type="checkbox", id="selectAll")
+                span.check   
+
+        div.deleteCon
+            button(type="button", class="deleteBtn")
+                <svg class="deleteBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" xmlns:v="https://vecta.io/nano">
+                    <path class="deleteBtn" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"/>
+                </svg>
+
+        div.engineCon
+            input(type="text", id="engine", placeholder="Search Your Notes...")
+
+    // fix layout
+    #fixLayout
+
+    // add note
+    #addNote
+        button(type="button", class="addNoteBtn")
+            <svg class="addNoteBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:v="https://vecta.io/nano">
+                <path class="addNoteBtn" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/>
+            </svg>
+            span.addNoteBtn add note
+
+

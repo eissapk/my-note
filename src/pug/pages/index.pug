@@ -1,0 +1,90 @@
+//- START HELPERS
+include ../helpers/variables
+include ../helpers/mixins
+//- END HELPERS
+
+//- START SIGNATURE
+include ../components/signature
+//- END SIGNATURE
+doctype
+html(lan="en" dir="ltr")
+    head
+        meta(charset="UTF-8")
+        title My Note
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        //- START MANIFEST
+        include ../components/manifest
+        //- END MANIFEST
+
+        //- START SEO
+        include ../components/seo
+        //- END SEO
+
+        //- START CSS
+        include ../components/style
+        //- END CSS
+
+        //- START HTMLSHIV
+        <!-- [if lt IE 9]>
+        script(src="script/html5shiv.js")
+        <![endif] -->
+        //- END HTMLSHIV
+
+    body
+
+        // !START MAIN WRAPPER
+        main
+
+            // start nav
+            include ../layout/nav
+            // end nav
+
+            // start header
+            include ../layout/header
+            // end header
+
+            // START note
+            include ../components/note
+            // END note
+
+            // start input box
+            #inputBoxWrapper
+                #inputBox
+                    .top
+                        button(type="button", class="cancelBtn") cancel
+                        button(type="button", id="saveBtn") save
+                    .bottom
+                        textarea(id="input", placeholder="Insert Your Note Here...")
+            // end input box
+
+            // start edit box
+            #editBoxWrapper
+                #editBox
+                    .top
+                        button(type="button", class="cancelBtn") cancel
+                        button(type="button", id="updateBtn") update
+                    .bottom
+                        textarea(id="editInput", placeholder="Edit Your Note Here...")
+            // end edit box
+
+            // start check question
+            #checkQWrapper
+                #checkQ
+                    div
+                        p Are you really want to delete this?
+
+                    div
+                        button(type="button", id="cancelBtn2") cancel
+                        button(type="button", id="deleteBtn") delete
+            // end check question
+
+        // !END MAIN WRAPPER
+
+        // start footer
+        include ../layout/footer
+        // end footer
+
+        //- START JS
+        include ../components/script
+        //- END JS

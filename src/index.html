@@ -1,0 +1,191 @@
+
+<!--
+___________.___  _________ _________   _____      ____  ________.___.__________
+\_   _____/|   |/   _____//   _____/  /  _  \     \   \/  /\__  |   |\____    /
+|    __)_ |   |\_____  \ \_____  \  /  /_\  \     \     /  /   |   |  /     / 
+|        \|   |/        \/        \/    |    \    /     \  \____   | /     /_ 
+/_______  /|___/_______  /_______  /\____|__  / /\/___/\  \ / ______|/_______ \
+        \/             \/        \/         \/  \/      \_/ \/               \/
+--><!DOCTYPE html>
+<html lan="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="img/icons/safari-pinned-tab.svg" color="#417ff5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="apple-mobile-web-app-status-bar" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- !START SEO-->
+    <meta name="description" content="My Note is a flexible and free web app to organize your plans, projects, and more.">
+    <meta name="author" content="Eissa Saber">
+    <!-- START SHARE-->
+    <!-- All Websites-->
+    <meta property="og:title" content="My Note">
+    <meta property="og:description" content="My Note is a flexible and free web app to organize your plans, projects, and more.">
+    <meta property="og:image" content="https://eissa.xyz/my-note/img/thumbnail.jpg">
+    <meta property="og:url" content="https://eissa.xyz/my-note">
+    <meta property="og:site_name" content="My Note">
+    <meta property="og:type" content="website">
+    <!-- Twitter-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="My Note">
+    <meta name="twitter:description" content="My Note is a flexible and free web app to organize your plans, projects, and more.">
+    <meta name="twitter:image" content="https://eissa.xyz/my-note/img/thumbnail.jpg">
+    <!-- END SHARE-->
+    <link href="https://eissa.xyz/my-note" rel="canonical">
+    <meta name="robots" content="index, follow">
+    <!-- !END SEO-->
+    <!-- *START CSS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&amp;display=swap">
+    <link gs="" rel="stylesheet" href="style/app.css">
+    
+    <link rel="alternate stylesheet" title="darkmode" href="style/darkmode.css" disabled>
+    <!-- *END CSS--><!-- [if lt IE 9]>
+    <script src="script/html5shiv.js"></script><![endif] -->
+  </head>
+  <body>
+    <!-- !START MAIN WRAPPER-->
+    <main>
+      <!-- start nav-->
+      <nav>
+        <!-- logo--><a id="logo" href="index.html"><img src="img/logo.svg" alt="logo"><span>my note</span></a>
+        <!-- mode switcher-->
+        <div id="mode" title="Toggle Mode">
+          <!-- moon-->
+          <button class="toggleMode" type="button"><svg class="toggleMode" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xmlns:v="https://vecta.io/nano">
+<path class="toggleMode" d="M160.496 0c-22.464 0-44.24 2.912-64.992 8.344C205.416 37.112 286.512 137.072 286.512 256S205.416 474.888 95.504 503.656c20.76 5.432 42.536 8.344 64.992 8.344 141.392 0 256-114.608 256-256S301.888 0 160.496 0z">
+</svg>
+          </button>
+          <!-- sun-->
+          <button class="toggleMode activeMode" type="button"><svg class="toggleMode" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xmlns:v="https://vecta.io/nano">
+<path class="toggleMode" d="M86.448 298.512L0 254.576l86.448-43.936zm339.104 0L512 254.576l-86.448-43.936zm-341.04-108.08l-46.208-85.248 96.112 12.896zm342.976 0l46.208-85.248-96.112 12.896zM271.584 76.464L344.8 12.88l8.224 96.624zm-31.168 0L167.2 12.88l-8.224 96.624zM84.512 321.568l-46.208 85.248 96.112-12.896zm342.976 0l46.208 85.248-96.112-12.896zM271.584 435.536L344.8 499.12l8.224-96.624zm-31.168 0L167.2 499.12l-8.224-96.624zm14.08-326.032C173.584 109.504 108 175.088 108 256s65.584 146.496 146.496 146.496S400.992 336.912 400.992 256s-65.584-146.496-146.496-146.496h0z">
+</svg>
+          </button>
+        </div>
+      </nav>
+      <!-- end nav-->
+      <!-- start header-->
+      <header>
+        <!-- start date-->
+        <div id="date">
+          <h1>12:00 PM</h1>
+          <p>may 25</p>
+        </div>
+        <!-- end date-->
+      </header>
+      <!-- end header-->
+      <!-- START note-->
+      <div id="notesWrapper">
+        <!-- tabswrapper-->
+        <div id="tabsWrapper">
+          <!-- colors    -->
+          <div id="colorsBox">
+            <button type="button" id="red"></button>
+            <button type="button" id="yellow"></button>
+            <button type="button" id="green"></button>
+          </div>
+          <!-- tabs slider-->
+          <div id="tabsSlider">
+            <!-- tab-->
+            <!-- add new tab btn-->
+            <div id="addNewTab" title="Add New Tab">
+              <div class="animateAddNewTab"></div>
+              <button class="aBtn clickAddTab" type="button"><span class="clickAddTab"></span><span class="clickAddTab"></span></button>
+            </div>
+          </div>
+        </div>
+        <!-- search engine-->
+        <div id="engineWrapper">
+          <div class="sliderBtns">
+            <button class="prevBtn" type="button"><svg class="prevBtn" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 64" xmlns:v="https://vecta.io/nano">
+<path class="prevBtn" d="M54 30H14.1L29.38 15.448a2 2 0 1 0-2.759-2.897L9.172 29.17C8.417 29.927 8 30.93 8 32s.417 2.073 1.207 2.862L26.62 51.448A1.99 1.99 0 0 0 28 52c.528 0 1.056-.208 1.45-.62a2 2 0 0 0-.069-2.827L14.038 34H54a2 2 0 1 0 0-4z">
+</svg>
+            </button>
+            <button class="nextBtn" type="button"><svg class="nextBtn" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 64 64" xmlns:v="https://vecta.io/nano">
+<path class="nextBtn" d="M37.38 12.552a2 2 0 0 0-2.758 2.897L49.963 30H10a2 2 0 1 0 0 4h39.9L34.62 48.552a2 2 0 0 0-.069 2.828c.393.412.92.62 1.448.62a1.99 1.99 0 0 0 1.379-.552l17.45-16.62A3.97 3.97 0 0 0 56 32c0-1.07-.416-2.073-1.207-2.862z">
+</svg>
+            </button>
+          </div>
+          <div class="selectAll">
+            <label>
+              <input type="checkbox" id="selectAll"><span class="check">  </span>
+            </label>
+          </div>
+          <div class="deleteCon">
+            <button class="deleteBtn" type="button"><svg class="deleteBtn" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" xmlns:v="https://vecta.io/nano">
+<path class="deleteBtn" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z">
+</svg>
+            </button>
+          </div>
+          <div class="engineCon">
+            <input type="text" id="engine" placeholder="Search Your Notes...">
+          </div>
+        </div>
+        <!-- fix layout-->
+        <div id="fixLayout"></div>
+        <!-- add note-->
+        <div id="addNote">
+          <button class="addNoteBtn" type="button"><svg class="addNoteBtn" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xmlns:v="https://vecta.io/nano">
+<path class="addNoteBtn" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z">
+</svg><span class="addNoteBtn">add note</span>
+          </button>
+        </div>
+      </div>
+      <!-- END note-->
+      <!-- start input box-->
+      <div id="inputBoxWrapper">
+        <div id="inputBox">
+          <div class="top">
+            <button class="cancelBtn" type="button">cancel</button>
+            <button type="button" id="saveBtn">save</button>
+          </div>
+          <div class="bottom">
+            <textarea id="input" placeholder="Insert Your Note Here..."></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- end input box-->
+      <!-- start edit box-->
+      <div id="editBoxWrapper">
+        <div id="editBox">
+          <div class="top">
+            <button class="cancelBtn" type="button">cancel</button>
+            <button type="button" id="updateBtn">update</button>
+          </div>
+          <div class="bottom">
+            <textarea id="editInput" placeholder="Edit Your Note Here..."></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- end edit box-->
+      <!-- start check question-->
+      <div id="checkQWrapper">
+        <div id="checkQ">
+          <div>
+            <p>Are you really want to delete this?</p>
+          </div>
+          <div>
+            <button type="button" id="cancelBtn2">cancel</button>
+            <button type="button" id="deleteBtn">delete</button>
+          </div>
+        </div>
+      </div>
+      <!-- end check question-->
+    </main>
+    <!-- !END MAIN WRAPPER-->
+    <!-- start footer-->
+    <footer>
+      <p>&copy; 2020 All Rights Reserved. <a href="https://eissa.xyz" target="_blank">Eissa Stock</a> </p>
+    </footer>
+    <!-- end footer-->
+    <!-- *START JS-->
+    <script gs="" defer src="script/app.js"></script>
+    
+    <!-- *END JS-->
+  </body>
+</html>

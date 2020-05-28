@@ -1,0 +1,35 @@
+@import "../helpers/variables";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+/* start note */
+#notesWrapper {
+    @include tablet {
+        width: calc(100% - 40px);
+    }
+
+    @include extralDesk {
+        width: 1400px;
+    }
+}
+
+/* end note */
+
+/* start inputBoxWrapper */
+#inputBoxWrapper,
+#editBoxWrapper {
+
+    #inputBox,
+    #editBox {
+        @include tablet {
+            width: calc(100% - 40px);
+        }
+
+        @include extralDesk {
+            width: 1400px;
+        }
+    }
+
+}
+
+/* end inputBoxWrapper */

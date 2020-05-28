@@ -1,0 +1,639 @@
+// helpers
+@import "../helpers/variables";
+@import "../helpers/functions";
+@import "../helpers/mixins";
+
+// !components
+/* Start buttons */
+@import "../components/buttons";
+/* End buttons */
+
+/* Start checkbox */
+@import "../components/checkbox";
+/* End checkbox */
+
+/* Start nav */
+@import "../layout/nav";
+/* End nav */
+
+/* Start header */
+@import "../layout/header";
+/* End header */
+
+
+
+// *
+/* !Start actualPage */
+
+/* start note */
+#notesWrapper {
+    position: relative;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+
+    /* tabs */
+    #tabsWrapper {
+        overflow: hidden;
+        height: 50px;
+        background-color: $darkGray;
+        padding: 0 10px;
+        border-radius: $radius $radius 0 0;
+
+        #colorsBox,
+        #tabsSlider {
+            float: $floatLeft;
+        }
+
+        /* colors */
+        #colorsBox {
+            height: 100%;
+
+            button {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: $red;
+                float: $floatLeft;
+                margin: 19px 10px 0 0;
+                cursor: auto;
+            }
+
+            #yellow {
+                background-color: $yellow;
+            }
+
+            #green {
+                background-color: $green;
+                margin-right: 0;
+            }
+
+
+        }
+
+        /* tabs */
+        #tabsSlider {
+            width: calc(100% - 76px);
+            margin: 10px 0 0 10px;
+            height: 40px;
+            white-space: nowrap;
+            overflow: hidden;
+
+            // tab
+            .tab {
+                height: 100%;
+                line-height: 40px;
+                background-color: $borderColor;
+                padding: 0 10px;
+                border-radius: 10px 10px 0 0;
+                display: inline-block;
+                white-space: normal;
+                border-left: 1px solid #d4d4d4;
+
+                &:hover {
+                    background-color: $white;
+                    transition: background 0.3s ease-in-out;
+
+                    input {
+                        border: 1px solid $white;
+                        cursor: pointer;
+                    }
+                }
+
+                // all
+                span.tasksNum,
+                input,
+                .xBtn {
+                    float: $floatLeft;
+                    margin-right: 5px;
+                }
+
+                span.tasksNum {
+                    user-select: none;
+                }
+
+                // input
+                input {
+                    max-width: 115px;
+                    text-overflow: ellipsis;
+                    border: 1px solid $borderColor;
+                    height: 30px;
+                    margin-top: 5px;
+                    text-transform: capitalize;
+                    text-indent: 5px;
+                    border-radius: 2px;
+                    box-sizing: border-box;
+                    background-color: transparent;
+
+                    &:hover {
+                        border: 1px solid $darkGray;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &::selection {
+                        background: $blue;
+                        color: $white;
+                    }
+
+                    &::placeholder {
+                        color: $red;
+                    }
+
+                }
+
+                // close btn
+                .xBtn {
+                    margin-right: 0;
+                }
+
+                // tab content
+                .content {
+                    position: absolute;
+                    top: 95px;
+                    left: 0;
+                    width: 100%;
+                    height: 185px;
+                    border-top: 1px solid $darkGray;
+                    background-color: $white;
+                    display: none;
+                    overflow: auto;
+
+                    ul {
+                        width: 100%;
+                        padding: 0;
+                        margin: 0;
+                        list-style-type: none;
+
+                        li {
+                            line-height: 25px;
+                            padding: 10px;
+                            border-bottom: 1px solid $borderColor;
+                            display: grid;
+                            grid-template-columns: 56px 35px 1fr;
+                            grid-template-rows: 1fr;
+
+                            .editCon {
+
+                                img {
+                                    width: 25px;
+                                    display: block;
+                                    margin: 0 auto;
+                                    cursor: pointer;
+                                    user-select: none;
+
+                                    &:active {
+                                        @include btnAnimation;
+                                    }
+                                }
+                            }
+
+                            .selectCon {
+                                height: 25px;
+                                width: 25px;
+                                justify-self: end;
+
+                                input {
+                                    height: 0;
+                                }
+                            }
+
+                            .textCon {
+                                margin-left: 10px;
+                                line-height: 25px;
+
+                                &::selection {
+                                    background-color: $blue;
+                                    color: $white;
+                                }
+                            }
+
+                        }
+
+                        li:last-of-type {
+                            border-bottom: 0;
+                        }
+                    }
+
+                    &::-webkit-scrollbar {
+                        width: 5px !important;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background: $blue;
+                        border-radius: $radius;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background: $borderColor;
+                        border-radius: 0 0 $radius $radius;
+                    }
+
+                }
+
+            }
+
+            .tab:first-of-type {
+                border-left: 0;
+            }
+
+            // active tab
+            .currentTab {
+                background-color: $white;
+
+                input {
+                    border-color: $white;
+                }
+
+                .content {
+                    display: block;
+                }
+            }
+
+            /* add new tab btn */
+            #addNewTab {
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                white-space: normal;
+                position: relative;
+                bottom: 5px;
+                left: 5px;
+                margin-top: 10px;
+                background-color: transparent !important;
+
+                .animateAddNewTab {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    animation: addTabBtn 1s cubic-bezier(0.66, 0, 0, 1) infinite;
+                }
+
+                button {
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    span {
+                        top: 7.5px;
+                        height: 15px;
+                        transform: none;
+                        background-color: $mainTextColor;
+
+                        &:last-child {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    /* engine */
+    #engineWrapper {
+        padding: 0 10px 10px;
+        overflow: hidden;
+        background-color: $white;
+
+        >div {
+            float: $floatLeft;
+            margin-top: 10px;
+            height: 25px;
+        }
+
+        // next, prev btns
+        .sliderBtns {
+            width: 56px;
+            margin-right: 10px;
+
+            button {
+                width: 25px;
+                height: 25px;
+                float: $floatLeft;
+                border-radius: 50%;
+
+                &:hover {
+                    background-color: $borderColor;
+                }
+
+                svg {
+                    position: relative;
+                    top: -2px;
+                    width: 80%;
+                    height: 80%;
+                    fill: $mainTextColor;
+                }
+
+            }
+
+            button:last-of-type {
+                float: $floatRight;
+            }
+        }
+
+        // select all tasks
+        .selectAll {
+            width: 25px;
+        }
+
+        // delete con
+        .deleteCon {
+            width: 25px;
+
+            margin: {
+                left: 10px;
+                right: 10px;
+            }
+
+            button {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+
+                svg {
+                    position: relative;
+                    top: -1px;
+                    width: 90%;
+                    height: 90%;
+                    fill: $subTextColor;
+                }
+
+            }
+
+        }
+
+        // engine
+        .engineCon {
+            position: relative;
+            width: calc(100% - 146px);
+            height: 35px;
+            top: 5px;
+            margin-top: 0;
+
+            input {
+                height: 100%;
+                width: 100%;
+                border: 0;
+                padding: 0 20px;
+                border-radius: 20px;
+                color: $mainTextColor;
+                transition: background 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: $borderColor;
+                }
+
+                &:focus {
+                    outline: none;
+                    background-color: $borderColor;
+                }
+            }
+
+        }
+
+    }
+
+    /* fix layout */
+    #fixLayout {
+        width: 100%;
+        height: 185px;
+        border-top: 1px solid $darkGray;
+        background-color: $white;
+    }
+
+    /* addNote button */
+    #addNote {
+        height: 40px;
+        background-color: $white;
+        color: $white;
+        border-radius: 0 0 $radius $radius;
+        border-top: 1px solid $darkGray;
+
+        button {
+            width: auto;
+            padding: 0 10px;
+
+            svg {
+                height: 25px;
+                margin: 7.5px 10px 0 0;
+                fill: $blue;
+                float: $floatLeft;
+            }
+
+            span {
+                height: 40px;
+                line-height: 40px;
+                float: $floatLeft;
+                color: $blue;
+                user-select: none;
+            }
+        }
+
+    }
+
+}
+
+/* end note */
+
+/* start inputBoxWrapper */
+#inputBoxWrapper,
+#editBoxWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(black, 0.5);
+    display: none;
+
+    #inputBox,
+    #editBox {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: calc(100% - 20px);
+        background-color: $white;
+        border-radius: $radius;
+
+        .top {
+            height: 40px;
+            background-color: $borderColor;
+            border-bottom: 1px solid $darkGray;
+            border-radius: $radius $radius 0 0;
+
+            button {
+                float: $floatLeft;
+                background-color: $white;
+                color: $subTextColor;
+                width: 80px;
+                height: 30px;
+                line-height: 30px;
+                margin: 5px 0 0 10px;
+                border: 1px solid $darkGray;
+            }
+
+            button:last-of-type {
+                float: $floatRight;
+                margin: 5px 10px 0 0;
+                background-color: $blue;
+                color: $white;
+                border: 0;
+            }
+
+        }
+
+        .bottom {
+            height: 200px;
+            padding: 10px;
+
+            textarea {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+                border: 1px solid $darkGray;
+                border-radius: $radius;
+                resize: none;
+                transition: box-shadow 0.3s ease-in-out;
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 1px 1px $blue;
+                }
+            }
+        }
+
+    }
+
+    .emptyInput {
+        animation: emptyInput 0.3s ease-in-out forwards;
+    }
+
+}
+
+/* end inputBoxWrapper */
+
+/* start checkQWrapper */
+#checkQWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(black, 0.5);
+    display: none;
+
+    #checkQ {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 300px;
+        background-color: $borderColor;
+        border-radius: $radius;
+
+        >div {
+            overflow: hidden;
+
+            &:first-of-type {
+                padding: 20px;
+
+                p {
+                    line-height: 26px;
+                }
+            }
+
+            &:last-of-type {
+                position: relative;
+
+                button {
+                    width: 50%;
+                    float: $floatLeft;
+                    color: $blue;
+                }
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 1px;
+                    height: 100%;
+                    background-color: $darkGray;
+                }
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: $darkGray;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+/* end checkQWrapper */
+
+/* !End actualPage */
+// *
+
+// animate input wrapper
+@keyframes emptyInput {
+    0% {
+        transform: translate(20px, -50%);
+    }
+
+    25% {
+        transform: translate(-20px, -50%);
+    }
+
+    50% {
+        transform: translate(20px, -50%);
+    }
+
+    75% {
+        transform: translate(-20px, -50%);
+    }
+
+    100% {
+        transform: translate(0px, -50%);
+    }
+}
+
+@keyframes addTabBtn {
+    from {
+        box-shadow: inset 0 0 0 2px rgba($blue, 1);
+    }
+
+    to {
+        box-shadow: inset 0 0 0 2px rgba($blue, 0);
+    }
+}
+
+
+/* Start footer */
+@import "../layout/footer";
+/* End footer */
