@@ -1,6 +1,5 @@
 const gulp = require("gulp"),
   pug = require("gulp-pug"),
-  htmlrm = require("gulp-html-remove"),
   htmlmin = require("gulp-htmlmin"),
   sass = require("gulp-sass"),
   sassGlob = require('gulp-sass-glob'),
@@ -8,7 +7,6 @@ const gulp = require("gulp"),
   cssmin = require("gulp-cssnano"),
   babel = require("gulp-babel"),
   jsmin = require("gulp-uglify"),
-  newer = require('gulp-newer'),
   srcmap = require("gulp-sourcemaps"),
   concat = require("gulp-concat"),
   notify = require("gulp-notify"),
@@ -20,9 +18,6 @@ gulp.task("html", () => {
   return gulp.src("./pug/pages/index.pug")
     .pipe(pug({
       pretty: true
-    }))
-    .pipe(htmlrm({
-      attrs: ["gs"]
     }))
     .pipe(htmlmin({
       collapseWhitespace: true

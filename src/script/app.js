@@ -70,7 +70,7 @@ class Header {
 
         //! hours
         // am, pm basis
-        const hArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        const hArr = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
         const hours = date.getHours();
         const hours_12 = hArr[hours];
 
@@ -116,7 +116,6 @@ class Header {
         timeCon.innerHTML = `${h} : ${m} <i id="am-pm">${am_pm}</i>`;
         //* sync date
         dateCon.innerHTML = `${mArr[month]} ${day}`;
-
     }
 
 }
@@ -315,6 +314,61 @@ class UI {
         UI.all = document.getElementById('selectAll');
         UI.tabNum = 2;
         UI.lastTap;
+        this.settingsBtn = document.querySelector('.settingsBtn');
+        this.settingsCloseBtn = document.querySelector('.settingsLayer--closeBtn');
+        this.settingsLayer = document.querySelector('.settingsLayer');
+    }
+
+    // backup/update data 
+    static syncData(e) {
+        // select elms 
+        const file = document.querySelector('.settingsLayer--input');
+
+        if (e.target.classList.contains('settingsLayer__innerWrapper--backupBtn')) { // backup
+            // get stored data 
+            const data = localStorage.getItem('tasks');
+            if (JSON.parse(data) !== null && (JSON.parse(data)).length) {
+                // make file 
+                const a = document.createElement("a");
+                const _file = new Blob([data], {
+                    type: 'application/json'
+                });
+                a.href = URL.createObjectURL(_file);
+                a.download = 'data.json';
+                a.click();
+            } else {
+                alert('No Data to Backup!');
+            }
+        } else if (e.target.classList.contains('settingsLayer__innerWrapper--updateBtn')) { // update
+            file.click();
+        }
+
+        // extract data from file 
+        file.addEventListener('change', e => {
+            const reader = new FileReader();
+            reader.readAsText(e.target.files[0]);
+            reader.onload = e => {
+                const data = e.target.result;
+
+                if (JSON.parse(data) !== null && (JSON.parse(data)).length) {
+                    //! update storage 
+                    localStorage.setItem('tasks', data);
+                    //! wipe out tabs 
+                    const tabs = [].slice.call(document.querySelectorAll("#tabsSlider .tab"));
+                    if (tabs.length) {
+                        tabs.forEach(tab => tab.remove());
+                    }
+                    //* update UI 
+                    UI.animateTabBtn();
+                    Store.loadTasks();
+                    // hide settings layer 
+                    UI.settingsLayer.style.display = "none";
+
+                } else {
+                    alert('No Data in This File!');
+                }
+            };
+        });
     }
 
     // *showTextarea
@@ -975,6 +1029,12 @@ Tabs.slider.addEventListener('click', Tabs.tabSwichter, true);
 Tabs.btnsCon.addEventListener('click', Tabs.navigateTabs, true);
 
 //* UI
+// show settings layer 
+UI.settingsBtn.addEventListener('click', () => UI.settingsLayer.style.display = "block");
+// hide settings layer 
+UI.settingsCloseBtn.addEventListener('click', () => UI.settingsLayer.style.display = "none");
+// backup/update data 
+UI.settingsLayer.addEventListener('click', UI.syncData);
 // click add note button
 UI.addNoteBtnCon.addEventListener('click', UI.showTextarea, true);
 // click save task
@@ -1005,7 +1065,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // sync date each minute
     setInterval(() => {
         Header.syncDate();
-    }, 60000);
+    }, 1 * 60 * 1000);
     // init tab btn animation
     UI.animateTabBtn();
     // init hide textarea

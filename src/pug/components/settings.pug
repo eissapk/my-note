@@ -1,0 +1,13 @@
+.settingsLayer
+  //- file reader 
+  input(type="file" class="settingsLayer--input" accept="application/json")
+
+  //- close button 
+  button(type="button", class="settingsLayer--closeBtn") &#10005;
+
+  //- butttons wrapper 
+  div(class="settingsLayer__innerWrapper")
+    section
+      p #[span Backup] or #[span Update] your data in case you cleared browser cache or formated your device!
+      button(type="button", class="settingsLayer__innerWrapper--backupBtn") backup
+      button(type="button", class="settingsLayer__innerWrapper--updateBtn") update
