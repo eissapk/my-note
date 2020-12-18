@@ -202,7 +202,7 @@
                             .textCon {
                                 margin-left: 10px;
                                 line-height: 25px;
-
+                                word-break: break-all;
                                 &::selection {
                                     background-color: $blue;
                                     color: $white;

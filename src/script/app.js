@@ -551,6 +551,7 @@ class UI {
     static addTask() {
         return new Promise((resolve, reject) => {
             let error = false;
+            const regex = /&nbsp;|[\n\r]|\u21b5|↵/g; // for detecting space and line break
             // select textarea element
             const input = document.getElementById('input');
             // select current tab
@@ -578,7 +579,7 @@ class UI {
                                         <span class="check"></span>
                                     </label>
                                 </span>
-                                <span class="textCon" data-id="${UI.makeId()}" data-tab="${UI.getTabTitle()}">${input.value}</span>
+                                <span class="textCon" data-id="${UI.makeId()}" data-tab="${UI.getTabTitle()}">${input.value.replace(regex, "<br>")}</span>
                                 `;
 
                         //* append li to currentTab
@@ -595,7 +596,6 @@ class UI {
 
                         //! hide textarea
                         document.getElementById('inputBoxWrapper').style.display = 'none';
-
                     } else {
                         // select textarea 
                         const inputBox = document.getElementById('inputBox');
@@ -676,6 +676,7 @@ class UI {
             const textarea = document.getElementById('editInput');
             // select update button
             const btn = document.getElementById('updateBtn');
+            const editBox = document.getElementById("editBox");
 
             // init hideTextarea fn
             UI.hideTextarea();
@@ -683,20 +684,25 @@ class UI {
             //* show layer
             layer.style.display = 'block';
             // sync task value
-            textarea.value = task.textContent;
+            textarea.value = task.innerText;
             // add focus 
             textarea.focus();
 
             //* add click event to update button
             btn.addEventListener('click', () => {
-                // update task
-                task.textContent = textarea.value;
-                // init edit task
-                Store.editTask(id, textarea.value);
-                //! hide layer
-                layer.style.display = 'none';
-                // wipe out field
-                textarea.value = '';
+                if (textarea.value.trim() != "") {
+                    // update task
+                    task.innerText = textarea.value;
+                    // init edit task
+                    Store.editTask(id, textarea.value);
+                    //! hide layer
+                    layer.style.display = 'none';
+                    // wipe out field
+                    textarea.value = '';
+                } else {
+                    editBox.classList.add('emptyInput');
+                    setTimeout(() => editBox.classList.remove('emptyInput'), 300);
+                }
             });
 
         }
@@ -870,11 +876,10 @@ class Store {
             return task.getAttribute(`data-${attr}`);
         }
         // init task object
-        const myTask = new Store(attr('tab'), attr('id'), task.textContent);
+        const myTask = new Store(attr('tab'), attr('id'), task.innerHTML);
 
         //* push objects to array
         arr.push(myTask);
-
         //! store tasks to localStorage
         localStorage.setItem('tasks', JSON.stringify(arr));
 
@@ -940,6 +945,8 @@ class Store {
         // select add btn
         const addBtn = document.getElementById('addNewTab');
 
+        const regex = /&nbsp;|[\n\r]|\u21b5|↵/g; // for detecting space and line break
+
         //* get tasks from localStorage
         let arr = Store.getTask();
 
@@ -975,7 +982,7 @@ class Store {
                                                     <span class="check"></span>
                                                 </label>
                                             </span>
-                                            <span class="textCon" data-id="${elm.id}" data-tab="${elm.tab}">${elm.text}</span>
+                                            <span class="textCon" data-id="${elm.id}" data-tab="${elm.tab}">${elm.text.replace(regex,"<br>")}</span>
                                         </li>
                                         `;
             });
