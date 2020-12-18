@@ -114,6 +114,20 @@ gulp.task('readme', () => {
     .pipe(notify("README task is done."));
 });
 
+// service worker
+gulp.task('serviceworker', () => {
+  return gulp.src(["./serviceWorker.js"])
+    .pipe(gulp.dest("../"))
+    .pipe(notify("service worker task is done."));
+});
+
+// service worker
+gulp.task('manifest', () => {
+  return gulp.src(["./manifest.json"])
+    .pipe(gulp.dest("../"))
+    .pipe(notify("manifest task is done."));
+});
+
 // WATCH 
 gulp.task("watch", async () => {
   // init server 
@@ -130,8 +144,11 @@ gulp.task("watch", async () => {
   gulp.watch("./style/sass/**/*.scss", gulp.series("css"));
   gulp.watch(["./script/*.js", "!./script/html5shiv.js"], gulp.series("js"));
   gulp.watch("./script/html5shiv.js", gulp.series("htmlshiv"));
+  gulp.watch("./style/darkmode.css", gulp.series("darkmode"));
   gulp.watch("./README.md", gulp.series("readme"));
   gulp.watch("./.gitignore", gulp.series("gitignore"));
+  gulp.watch("./serviceWorker.js", gulp.series("serviceworker"));
+  gulp.watch("./manifest.json", gulp.series("manifest"));
 });
 
 // DEFAULT 

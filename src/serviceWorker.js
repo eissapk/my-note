@@ -1,10 +1,10 @@
 //! Cache the assets
-const staticMyNote = "my-note-app-v1";
+const staticMyNote = "my-note-v1.1.0";
 const assets = [
     "index.html",
-    "style/app.css",
+    "style/app.min.css",
     "style/darkmode.css",
-    "script/app.js",
+    "script/app.min.js",
     "script/html5shiv.js",
     "img/edit-pen.svg",
     "img/logo.svg",
