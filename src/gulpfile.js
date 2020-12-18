@@ -88,7 +88,7 @@ gulp.task('darkmode', () => {
 
 // copy files
 gulp.task('copy', () => {
-  return gulp.src(["./README.md", "./manifest.json", "./serviceWorker.js"])
+  return gulp.src(["./README.md", "./manifest.json", "./serviceWorker.js","./.gitignore"])
     .pipe(gulp.dest("../"))
     .pipe(notify("Files task is done."));
 });
@@ -98,6 +98,20 @@ gulp.task('img', () => {
   return gulp.src(["./img/**/*.*"])
     .pipe(gulp.dest("../img"))
     .pipe(notify("Images task is done."));
+});
+
+// gitignore
+gulp.task('gitignore', () => {
+  return gulp.src(["./.gitignore"])
+    .pipe(gulp.dest("../"))
+    .pipe(notify("Git ignore task is done."));
+});
+
+// readme
+gulp.task('readme', () => {
+  return gulp.src(["./README.md"])
+    .pipe(gulp.dest("../"))
+    .pipe(notify("README task is done."));
 });
 
 // WATCH 
@@ -116,6 +130,8 @@ gulp.task("watch", async () => {
   gulp.watch("./style/sass/**/*.scss", gulp.series("css"));
   gulp.watch(["./script/*.js", "!./script/html5shiv.js"], gulp.series("js"));
   gulp.watch("./script/html5shiv.js", gulp.series("htmlshiv"));
+  gulp.watch("./README.md", gulp.series("readme"));
+  gulp.watch("./.gitignore", gulp.series("gitignore"));
 });
 
 // DEFAULT 
