@@ -1,11 +1,10 @@
 # My Note
-
 My Note is a flexible and free web app to organize your plans, projects, and more.
 
 ## Features
-
 * Progressive Web App
 * Synced With LocalStorage
+* Upload and Backup Your Data
 * Add Task
 * Remove - Edit Task
 * Tasks Counter
@@ -18,7 +17,6 @@ My Note is a flexible and free web app to organize your plans, projects, and mor
 * Much More
 
 ## Built With
-
 * HTML5
 * CSS3
 * Pugjs
@@ -29,5 +27,4 @@ My Note is a flexible and free web app to organize your plans, projects, and mor
 * Gulp
 
 ## Authors
-
 * **Eissa Saber** - *Initial work* - [EissaSaber](https://github.com/eissapk)

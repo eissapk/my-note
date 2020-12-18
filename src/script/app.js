@@ -1,3 +1,8 @@
+/**
+ * @author Eissa Saber
+ * @version 1.1.0
+ */
+
 //* Register the Service Worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {

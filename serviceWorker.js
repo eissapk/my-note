@@ -1,10 +1,10 @@
-// Cache the assets
+//! Cache the assets
 const staticMyNote = "my-note-app-v1";
 const assets = [
     "index.html",
-    "style/app.min.css",
+    "style/app.css",
     "style/darkmode.css",
-    "script/app.min.js",
+    "script/app.js",
     "script/html5shiv.js",
     "img/edit-pen.svg",
     "img/logo.svg",
@@ -19,7 +19,7 @@ self.addEventListener("install", installEvent => {
     );
 });
 
-// Fetch the assets
+//* Fetch the assets
 self.addEventListener("fetch", fetchEvent => {
     fetchEvent.respondWith(
         caches.match(fetchEvent.request).then(res => {
