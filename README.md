@@ -1,12 +1,19 @@
 # My Note
-My Note is a flexible and free web app to organize your plans, projects, and more.
+> My Note is a flexible and free web app to organize your plans, projects, and more.
 
 ## Installation
-* cd path/src
-* npm install
-* npm run dev
-* cd ..
+```bash
+  cd path/src
+```
 
+```bash
+  npm install
+```
+
+```bash
+  npm run dev
+```
+___
 ## Features
 * Progressive Web App
 * Synced With LocalStorage
@@ -33,4 +40,4 @@ My Note is a flexible and free web app to organize your plans, projects, and mor
 * Gulp
 
 ## Authors
-* **Eissa Saber** - *Initial work* - [EissaSaber](https://github.com/eissapk)
+* **Eissa Saber** - [Github](https://github.com/eissapk)
