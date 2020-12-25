@@ -334,7 +334,8 @@ class UI {
                     type: 'application/json'
                 });
                 a.href = URL.createObjectURL(_file);
-                a.download = 'data.json';
+                const date = new Date().toISOString().replace(/\..*/g, "").replace(/:/g, "-").replace(/T/g, " ");
+                a.download = `My Note ${date}.json`;
                 a.click();
             } else {
                 alert('No Data to Backup!');
