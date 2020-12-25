@@ -4,14 +4,9 @@
 ## Installation
 ```bash
   cd path/src
-```
-
-```bash
   npm install
-```
-
-```bash
   npm run dev
+  cd ..
 ```
 ___
 ## Features
